@@ -1,0 +1,8 @@
+/**
+ * Canvas screen
+ */
+
+class Screen
+{
+
+}

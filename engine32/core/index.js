@@ -4,11 +4,28 @@
  * by not using the `function` keyword
  */
 
-class Engine32
+class E32Core
 {
     constructor()
     {
-        console.log("Engine.v.0.0.1");
+        /**
+         * !- DEBUG ONLY -!
+         */
+        this.debug();
+        
+        console.log(`E32Core.${env.version}`);
+    }
+
+    /**
+     * !- DEBUG ONLY -!
+     * Add all debugging methods, tests, etc.
+     */
+    debug()
+    {
+        if (env.dev_refresh)
+        {
+            setInterval(()=>location.reload(), env.dev_refresh);
+        }
     }
 }
-const E32 = new Engine32();
+const e32Core = new E32Core();
