@@ -1,0 +1,14 @@
+{
+    "vX.y.z" : {
+        "title": "",
+        "date": "dd-mm-23",
+        "added": [],
+        "changed": [],
+        "fixed": [],
+        "deleted": []
+    },
+    "v0.0.0" : {
+        "title": "Initial setup",
+        "date": "25-02-23"
+    }
+}
