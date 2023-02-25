@@ -1,9 +1,20 @@
-* {
+*
+{
     padding: 0;
     margin:0;
     font-family: 'Arial';
 }
-body {
+body
+{
+    overflow: hidden;
     /* background:#000;
     color: #0f0; */
+}
+
+canvas
+{
+    position: fixed;
+    top:0;
+    left:0;
+    border:5px solid #0f0;
 }

@@ -8,22 +8,26 @@ class E32Core
 {
     constructor()
     {
+        console.log(`E32Core.${env.version}`);
+
         this.screen = new Screen();
         /**
          * !- DEBUG ONLY -!
          */
         this.debug();
         
-        this.init_event_loop();
-        console.log(`E32Core.${env.version}`);
+        this.begin_polling();
+        // this.screen.demo();
     }
 
-    init_event_loop()
+    begin_polling()
     {
         setInterval(()=>{
-            console.log("event");
-            this.screen.clear();
-            this.screen.write("Hello E32Core"+Math.random());
+            console.log("poll");
+            /**
+             * Fetch data from url
+             */
+            this.screen.demo();
         }, env.poll_interval);
     }
 
