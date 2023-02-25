@@ -1,0 +1,26 @@
+{
+    "title": "JavaScript mini-engine32 [m32]",
+    "version": "0.1.0",
+    "event-schema": {
+        "description":[
+            "Event communication schema"
+        ],
+        "move_cursor": {
+            "t": {
+                "desc": "Event type",
+                "value": "m"
+            },
+            "params": {
+                "x": {
+                    "desc": "X position",
+                    "value": "number"
+                },
+                "y": {
+                    "desc": "Y position",
+                    "value": "number"
+                }
+            }
+        }
+    }
+    
+}

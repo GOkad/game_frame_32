@@ -8,15 +8,18 @@
         "deleted": []
     },
     "v0.1.0" : {
-        "title": "",
-        "date": "dd-mm-23",
+        "title": "m32 Engine core",
+        "date": "25-02-23",
         "added": [
-            "env.json file",
-            "debug method in Core"
+            "Engine core",
+            "e32.demo.js script to develop and demo engine functionality"
         ],
         "changed": [],
         "fixed": [],
-        "deleted": []
+        "deleted": [
+            "Old Engine.js files",
+            "env.js", "index.js", "Screen.js", "styles.css"
+        ]
     },
     "v0.0.0" : {
         "title": "Initial setup",
