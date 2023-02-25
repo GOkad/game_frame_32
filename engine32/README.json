@@ -1,6 +1,21 @@
 {
     "title": "JavaScript mini-engine32 [m32]",
     "version": "0.1.0",
+    "links": {
+        "hmtl_minify": "https://www.willpeavy.com/tools/minifier/",
+        "string_size": "https://www.javainuse.com/bytesize"
+    },
+    "min32": {
+        "description": [
+            "Last stable minified version",
+            "of the engine"
+        ],
+        "version": "0.1.0",
+        "files": {
+            "output": "build/min32.html",
+            "C++ file": "build/Engine32.h"
+        }
+    },
     "event-schema": {
         "description":[
             "Event communication schema"
