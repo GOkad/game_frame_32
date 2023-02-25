@@ -56,7 +56,6 @@ void Engine32::register_routes()
     [](AsyncWebServerRequest* request){
         request->send(200, "text/html", m32);
     });
-
     m_server->on("/events", HTTP_GET,
     [](AsyncWebServerRequest* request){
         Serial.println("event loop");

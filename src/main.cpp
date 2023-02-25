@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include "config/.WebServerConfig.h"
+#include "config/HardwareConfig.h"
 #include "Engine32.h"
 
 
@@ -8,6 +9,7 @@ WebServerConfig config{};
 
 void core_1_main(void* parameter)
 {
+  
   while(true)
   {
     Serial.println("Core 1 task;");
