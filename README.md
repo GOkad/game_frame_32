@@ -1,5 +1,9 @@
 # Game_Frame_32
 ESP32 + JavaScript: Mobile game framework
 
-## Game_Frame_32 version: v.0.0.0 [dd-mm-23]
-## min-gine32 version: v.0.0.0 [dd-mm-23]
+TODO: Exmplain config/WebServerCofnig.h
+
+## Engine_32
+* version: 0.1.0 [25-02-23]
+## m32
+* version: 0.1.0 [25-02-23]
