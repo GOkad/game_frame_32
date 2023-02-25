@@ -15,8 +15,8 @@ class Screen
     constructor()
     {
         // Calculations
-        env.width = window.innerWidth -10;
-        env.height = window.innerHeight -10;
+        env.width = window.innerWidth;
+        env.height = window.innerHeight;
         env.max_symbols = Math.floor((env.width/env.font_size) * 2);
 
         // Set canvas size
@@ -58,8 +58,10 @@ class Screen
         cursor.x = x;
         cursor.y = y;
 
+        console.log( cursor );
         this.rect(
-            x+cursor.offset, y+cursor.offset,
+            (x*env.grid_size)+cursor.offset,
+            (y*env.grid_size)+cursor.offset,
             cursor.size, cursor.size,
             env.yellow
         );
@@ -79,10 +81,24 @@ class Screen
     grid_demo()
     {
 
+        cursor.x++;
+        if ( cursor.x >= (env.width/env.grid_size)-1 )
+        {
+            cursor.x = 0;
+            cursor.y++;
+        }
+        if ( cursor.y >= (env.height/env.grid_size)-1 )
+        {
+            cursor.y = 0;
+        }
+
         for(let y = 0; y < env.height/env.grid_size; y++) {
+            let flag = ( y%2 == 0 );
             for(let x = 0; x < env.width/env.grid_size; x++)
             {
-                let color = (x%2) == 0 ? env.red : env.green;                
+                flag = !flag;
+                let color = flag ? env.white : env.grey;
+                
                 this.rect(
                     x*env.grid_size, y*env.grid_size,
                     env.grid_size   , env.grid_size,

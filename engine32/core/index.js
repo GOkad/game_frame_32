@@ -43,4 +43,4 @@ class E32Core
         }
     }
 }
-const e32Core = new E32Core();
+var e32Core = new E32Core();

@@ -61,5 +61,6 @@ var env = {
     white: "#fff",
     red: "#f00",
     green: "#0f0",
-    yellow: "#ff0"
+    yellow: "#ff0",
+    grey: "#a1a1a1"
 };
