@@ -11,9 +11,6 @@
 Engine32::Engine32(const WebServerConfig& config):
     m_server{std::make_unique<AsyncWebServer>(80)}
 {
-    Serial.println("Alive");
-
-    connect_to_network(config);
     setup_access_point(config);
     register_routes();
     m_server->begin();

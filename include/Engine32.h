@@ -16,7 +16,7 @@ public:
     Engine32(const WebServerConfig& config);
     ~Engine32();
 private:
-    void connect_to_network(const WebServerConfig &config);
+    void static connect_to_network(const WebServerConfig &config);
     void setup_access_point(const WebServerConfig& config);
     void register_routes();
 };
