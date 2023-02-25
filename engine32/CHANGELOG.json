@@ -7,6 +7,20 @@
         "fixed": [],
         "deleted": []
     },
+    "v0.1.0" : {
+        "title": "m32 Engine core",
+        "date": "25-02-23",
+        "added": [
+            "Engine core",
+            "e32.demo.js script to develop and demo engine functionality"
+        ],
+        "changed": [],
+        "fixed": [],
+        "deleted": [
+            "Old Engine.js files",
+            "env.js", "index.js", "Screen.js", "styles.css"
+        ]
+    },
     "v0.0.0" : {
         "title": "Initial setup",
         "date": "25-02-23"
