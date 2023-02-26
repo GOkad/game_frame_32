@@ -23,7 +23,7 @@
             "`if(ev.t=='m')` to directly calling method `eh[ev.t](ev.p)`",
             "Temporarily depricated m32",
             "Renamed `scripts` directory to `m32`",
-            "Renamed `min32.html` to `engine32.html`"
+            "Renamed `min32.html` to `build.html`"
         ]
     },
     "v0.1.0" : {

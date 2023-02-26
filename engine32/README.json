@@ -5,6 +5,31 @@
         "hmtl_minify": "https://www.willpeavy.com/tools/minifier/",
         "string_size": "https://www.javainuse.com/bytesize"
     },
+    "/build": {
+        "files": [
+            {
+                "title": "Engine32.h",
+                "description": [
+                    "C++ header file containing ",
+                    "the minified version of the html/js build",
+                    "as a RAWLITERAL with PROGMEM"
+                ]
+            },
+            {
+                "title": "build.html",
+                "description": [
+                    "Simplified version of engine32.html",
+                    "Must be with cleaned out comments and combined script"
+                ]
+            },
+            {
+                "title": "engine32.js",
+                "description": [
+                    "JavaScript engine"
+                ]
+            }
+        ]
+    },
     "min32": {
         "description": [
             "Last stable minified version",
