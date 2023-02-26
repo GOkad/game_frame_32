@@ -12,6 +12,8 @@
 ### Added
 - `Controller` class
 - `JSONBuilder` class
+### Changed
+- Renamed JavaScript Engine dir: `engine32` -> `m32`
 ### Deleted
 - Pinning `Controller` task to `core 1` because it's redundant. `Engine` runs on `core 1` as `core 0` is used for `Wifi`.
 ---

@@ -1,0 +1,47 @@
+{
+    "title": "Engine32 JavaScript Engine",
+    "build": {
+        "path": "build/",
+        "file": "engine32.js"
+    },
+    "vX.y.z" : {
+        "title": "",
+        "date": "dd-mm-23",
+        "added": [],
+        "changed": [],
+        "fixed": [],
+        "deleted": []
+    },
+    "v0.2.0" : {
+        "title": "Engine scale down",
+        "date": "26-02-23",
+        "node": "Scaling down the JS Engine to only handle Canvas Screen",
+        "added": [
+            "Canvas.js engine"
+        ],
+        "changed": [
+            "`if(ev.t=='m')` to directly calling method `eh[ev.t](ev.p)`",
+            "Temporarily depricated m32",
+            "Renamed `scripts` directory to `m32`",
+            "Renamed `min32.html` to `build.html`"
+        ]
+    },
+    "v0.1.0" : {
+        "title": "m32 Engine core",
+        "date": "25-02-23",
+        "added": [
+            "Engine core",
+            "e32.demo.js script to develop and demo engine functionality"
+        ],
+        "changed": [],
+        "fixed": [],
+        "deleted": [
+            "Old Engine.js files",
+            "env.js", "index.js", "Screen.js", "styles.css"
+        ]
+    },
+    "v0.0.0" : {
+        "title": "Initial setup",
+        "date": "25-02-23"
+    }
+}
