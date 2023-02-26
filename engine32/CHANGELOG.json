@@ -7,6 +7,16 @@
         "fixed": [],
         "deleted": []
     },
+    "v0.2.0" : {
+        "title": "Schema design",
+        "date": "dd-02-23",
+        "added": [],
+        "changed": [
+            "`if(ev.t=='m')` to directly calling method `eh[ev.t](ev.p)`"
+        ],
+        "fixed": [],
+        "deleted": []
+    },
     "v0.1.0" : {
         "title": "m32 Engine core",
         "date": "25-02-23",

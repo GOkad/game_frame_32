@@ -35,6 +35,15 @@
                     "value": "number"
                 }
             }
+        },
+        "draw": {
+            "t": {
+                "desc": "Event type",
+                "value": "d"
+            },
+            "params": {
+                
+            }
         }
     }
     

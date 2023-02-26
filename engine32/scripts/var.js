@@ -1,7 +1,5 @@
 var
 // [--System Variables--]
-// ESP32 IP
-ip = "http://192.168.0.4/",
 // Window height
 h = window.innerHeight,
 // Window width
@@ -89,6 +87,10 @@ eh = {
     {
         cx = x; cy = y;
         cm.dc();
+    },
+    d(cmp)
+    {
+
     }
 }
 ;
