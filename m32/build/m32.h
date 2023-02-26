@@ -1,3 +1,17 @@
+/**
+ * @file Engine32.h
+ * Minified version of the JavaScript engine.
+ * Copy this file into "../include/core/m32.h"
+ * 
+ * 
+ * @date 2023-02-26
+ * Last minified version of m32
+ * version: 0.2.0
+ * size:    -- MINIFY FIRST --
+ * 
+ */
+
+const char* m32 PROGMEM = R"(
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,3 +36,4 @@ f.m();
         </script>
     </body>
 </html>
+)";

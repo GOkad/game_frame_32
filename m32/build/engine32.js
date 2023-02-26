@@ -15,20 +15,6 @@ c=s.getContext("2d"),
 // `this.` if using class;
 // - using `f.m()` and not `this.m()` to save space;
 f={
-    // main()
-    m()
-    {
-        // Initiate Canvas
-        s.width = w;
-        s.height = h;
-
-        // Init screen buffer read
-        setInterval(()=>{
-            f.rq(`/sbuf`,(dt)=>{
-                f.d(dt);
-            })
-        }, 1000/5);
-    },
     // Request function
     // ur - URL + url params
     // cd - on success callback
@@ -40,8 +26,28 @@ f={
         // .then(dt=>cb(dt))
         // .catch(e=>alert(e.message));
     },
-
-    // Canvas Functionalty
+    // main()
+    m()
+    {
+        // Initiate Canvas
+        s.width = w;
+        s.height = h;
+        f.rq("/cfg?w="+w+"&h="+h,(cf)=>{
+            f.i(cf)
+        })
+    },
+    // Init engine and start `/sbuf` read loop
+    i(cf){
+        console.log(cf);
+        // [DEBUG ONLY]
+        console.log(cf);
+        setInterval(()=>{
+            f.req(`/sbuf`,(el)=>{
+                f.d(el);
+            })
+        },1000/2);
+    },
+    // [ Canvas Functionalty ]
     // Parse string to element
     p(e)
     {
