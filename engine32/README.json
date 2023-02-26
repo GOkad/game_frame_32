@@ -17,7 +17,9 @@
         }
     },
     "event-schema": {
+        "@depricated": true,
         "description":[
+            "Temporarily depricated as the engine is being scaled down",
             "Event communication schema"
         ],
         "move_cursor": {

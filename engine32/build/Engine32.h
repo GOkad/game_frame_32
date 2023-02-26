@@ -8,6 +8,8 @@
  * Last minified version of engine32
  * version: 0.1.0
  * size:    1.25KB
+ * 
+ * @depricated
  */
 
 const char* m32 PROGMEM = R"(
