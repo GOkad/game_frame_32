@@ -9,6 +9,8 @@
 #include "ESPAsyncWebServer.h"
 #include "config/.WebServerConfig.h"
 
+#include "core/m32.h"
+
 using async_web_server_up = std::unique_ptr<AsyncWebServer>;
 
 class Connection
@@ -66,8 +68,7 @@ private:
          */
         m_server->on("/", HTTP_GET,
         [](AsyncWebServerRequest* request){
-            std::string m32 = "ERROR";
-            request->send(200, "text/html", m32.c_str());
+            request->send(200, "text/html", m32);
         });
 
         /**
