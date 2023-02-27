@@ -23,7 +23,7 @@ var h=window.innerHeight,w=window.innerWidth,d=document,s=d.querySelector("canva
 f={
 rq(ur,cb){fetch(ur).then(rq=>rq.json()).then(dt=>cb(dt)).catch(e=>alert(e.message))},
 m(){s.width=w;s.height=h;f.rq("/cfg?w="+w+"&h="+h,(cf)=>{f.i(cf)})},
-i(cf){console.log(cf);setInterval(()=>{f.req(`/sbuf`,(el)=>{f.d(el);})},1000/2)},
+i(cf){console.log(cf);setInterval(()=>{f.rq(`/sbuf`,(el)=>{f.d(el);})},1000/2)},
 p(e){a=e.split(","),a.shift();return [e[0], a]},
 d(el){el.forEach(e=>{let [t,a]=f.p(e);console.log(t,a);f[t](...a)})},
 c(fc){c.fillStyle='#'+fc;},

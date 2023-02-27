@@ -11,7 +11,7 @@
 
 #include "core/m32.h"
 
-using async_web_server_up = std::unique_ptr<AsyncWebServer>;
+using async_web_server_up   = std::unique_ptr<AsyncWebServer>;
 
 class Connection
 {
@@ -27,7 +27,6 @@ public:
         register_routes();
         m_server->begin();
     }
-
 
 private:
     void connect_to_network(const WebServerConfig& config)

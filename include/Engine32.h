@@ -3,6 +3,9 @@
 
 #include <memory>
 
+class ScreenBuffer;
+using screen_buffer_up = std::unique_ptr<ScreenBuffer>;
+
 struct WebServerConfig;
 class Connection;
 using connection_up = std::unique_ptr<Connection>;
@@ -14,7 +17,8 @@ using connection_up = std::unique_ptr<Connection>;
 class Engine32
 {
 private:
-    connection_up   m_connection;
+    screen_buffer_up    m_screen_buffer;
+    connection_up       m_connection;
     // controller_up       m_controller;
 public:
     Engine32(const WebServerConfig& web_server_config);
