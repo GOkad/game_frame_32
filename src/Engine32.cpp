@@ -1,11 +1,11 @@
 #include <Arduino.h>
 
 #include "core/Connection.h"
-#include "core/ScreenBuffer.h"
+#include "core/Screen.h"
 #include "Engine32.h"
 
 Engine32::Engine32(const WebServerConfig& web_server_config):
-    m_screen_buffer{std::make_unique<ScreenBuffer>()},
+    m_screen{std::make_unique<Screen>()},
     m_connection{std::make_unique<Connection>(web_server_config)}
 {
     register_web_routes();
@@ -24,14 +24,14 @@ void Engine32::register_web_routes()
     });
 
     /**
-     * Get screen configuration
+     * Get game config
      * 
      * @param w - Screen Width
      * @param h - Screen Height
      */
     m_connection->register_route("/cfg", WebRequestMethod::HTTP_GET,
     [
-        screen_buffer = m_screen_buffer.get()
+        screen = m_screen.get()
     ](AsyncWebServerRequest* request){
         std::uint16_t screen_width = request->hasParam("w") ?
             std::stoi(request->getParam("w")->value().c_str()) : 0;
@@ -39,9 +39,8 @@ void Engine32::register_web_routes()
         std::uint16_t screen_height = request->hasParam("h") ?
             std::stoi(request->getParam("h")->value().c_str()) : 0;
 
-        screen_buffer->demo(screen_width, screen_height);
+        screen->demo(screen_width, screen_height);
 
-        
         std::string josn_config = "{}";
         request->send(200, "text/html", josn_config.c_str());
     });
@@ -50,14 +49,14 @@ void Engine32::register_web_routes()
      * Read screen buffer
      */
     m_connection->register_route("/sbuf", WebRequestMethod::HTTP_GET,
-    [screen_buffer = m_screen_buffer.get()](AsyncWebServerRequest *request){
+    [screen = m_screen.get()](AsyncWebServerRequest *request){
         std::string response = "[";
         // Serial.println("Waiting for ScreenBuffer...");
-        while(!screen_buffer->can_read()) {
+        while(!screen->can_read()) {
             // Serial.print(".");
         }
         // Serial.println("done");
-        response += screen_buffer->read().c_str();
+        response += screen->read_buffer().c_str();
         response += "]";
         Serial.println(response.c_str());
 

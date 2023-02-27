@@ -1,18 +1,17 @@
-#ifndef E32_SCREEN_BUFFER
-#define E32_SCREEN_BUFFER
+#ifndef E32_SCREEN
+#define E32_SCREEN
 
 #include <vector>
 #include <string>
 #include <sstream>
 
-using scr_buffer = std::vector<std::string>;
-class ScreenBuffer
+class Screen
 {
 private:
-    bool        m_can_read;
-    scr_buffer  m_buffer;
+    bool m_can_read;
+    std::vector<std::string>  m_buffer;
 public:
-    ScreenBuffer()
+    Screen()
     {
         m_can_read = true;
         m_buffer.clear();
@@ -26,7 +25,7 @@ public:
         m_can_read = can_read;
         return m_can_read;
     }
-    std::string read()
+    std::string read_buffer()
     {
         std::stringstream stream;
 
