@@ -20,10 +20,12 @@ public:
     {
         return m_can_read;
     }
-    void add_rect()
+    bool set_can_read(bool can_read)
     {
+        m_can_read = can_read;
+        return m_can_read;
     }
-    std::string read_buffer()
+    std::string read()
     {
         // Return buffer
         return "\"r,10,10,50,50,0f0\"";

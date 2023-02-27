@@ -24,6 +24,7 @@ public:
     Engine32(const WebServerConfig& web_server_config);
     ~Engine32();
 private:
+    void register_web_routes();
 };
 
 #endif
