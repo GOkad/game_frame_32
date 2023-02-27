@@ -60,18 +60,23 @@ public:
         const float grid_width = std::floor(screen_width/cell_size);
         const float grid_height = std::floor(screen_height/cell_size);
 
-        std::string text = "t,";
-        text += "gw: ";
-        text += grid_width;
-        text += "gh: ";
-        text += grid_height;
-        text += ",";
-        text += "10,10,15,f00";
-
         // Rectangle element
-        m_buffer.push_back("r,10,10,50,50,0f0");
-        m_buffer.push_back(text);
-    
+        for(int y = 0; y < grid_height; y++ )
+        {
+            bool flag = ( y%2 == 0 );
+            for(int x = 0; x < grid_width; x++ )
+            {
+                flag = !flag;
+                std::stringstream cell;
+                cell << "r" << "," <<
+                        (int)(x*cell_size) << "," <<
+                        (int)(y*cell_size) << "," <<
+                        (int)cell_size << "," <<
+                        (int)cell_size << "," <<
+                        (flag ? "0f0" : "f00");
+                m_buffer.push_back(cell.str());
+            }
+        }
         m_can_read = true;        
     }
 };
