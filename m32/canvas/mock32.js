@@ -20,8 +20,8 @@ var mock32 = {
         const [url, params] = this.parseURL(url_string);
         switch(url)
         {
-            case "/init":
-                this.init(params, callback);
+            case "/cfg":
+                this.set_confg(params, callback);
                 break;
             case "/sbuf":
                 this.read_sbuf(params, callback);
@@ -30,23 +30,41 @@ var mock32 = {
                 console.error("Undefined endpoint"+url);
         }
     },
-    init(params, callback)
+    set_confg(params, callback)
     {
         const w = parseInt(params.w);
         const h = parseInt(params.h);
-        console.log(w, h);
 
-        return {
-
+        const config = {
+            /**
+             * Refresh rate [ms]
+             * Request Screen Buffer every r[ms]
+             */
+            r: 500,
+            /**
+             * Clear screen each frame
+             */
+            c: true
         };
+
+        callback(config);
     },
     read_sbuf(params, callback)
     {
-        callback([
+        let sbuffer = [
             ...this.grid(),
             this.grid_snapper(),
             ...this.text(),
-        ]);
+        ];
+
+        sbuffer = [
+            't,Hello Engine32,10,0,15,f00',
+            'r,10,20,50,50,0f0',
+            'l,10,10,100,250,ff0,10',
+            'c,100,100,50,0,f0f'
+        ];
+
+        callback(sbuffer);
     },
     // Demo functions
     text()

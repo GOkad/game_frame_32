@@ -6,10 +6,11 @@ h=window.innerHeight,
 w=window.innerWidth,
 // HTML Document
 d=document,
+// Canvas Element
 s=d.querySelector("canvas"),
 // Canvas context
 c=s.getContext("2d"),
-
+m = Math,
 // - using Object to define all functions
 // to save space from `function` keyword and 
 // `this.` if using class;
@@ -38,14 +39,17 @@ f={
     },
     // Init engine and start `/sbuf` read loop
     i(cf){
-        console.log(cf);
-        // [DEBUG ONLY]
-        console.log(cf);
         setInterval(()=>{
-            f.req(`/sbuf`,(el)=>{
+            f.rq(`/sbuf`,(el)=>{
+
+                if(cf.c)
+                {
+                    f.r(0,0,w,h,'000');
+                }
+
                 f.d(el);
             })
-        },1000/2);
+        },cf.r);
     },
     // [ Canvas Functionalty ]
     // Parse string to element
@@ -61,7 +65,6 @@ f={
         el.forEach(e=>{
             // Parse element string to arguments
             let [t,a] = f.p(e);
-            console.log(t,a);
             f[t](...a);
             // using `cv.m` instead of `this.m` to save space
         });
@@ -69,9 +72,26 @@ f={
     // Fill style
     // Extracted into own method to save space
     // fc - Hex color value without the `#`
-    c(fc)
+    fs(fc)
     {
         c.fillStyle = '#'+fc;
+    },
+    // Stoke style
+    // sc - Hex color value without the `#`
+    ss(sc)
+    {
+        c.strokeStyle = "#"+sc;
+    },
+    // Fill Gradient
+    // TODO: implement
+    gr()
+    {
+
+    },
+    // Set line width
+    lw(wd)
+    {
+        c.lineWidth=wd;
     },
     // Add text
     // tm - message
@@ -80,10 +100,23 @@ f={
     // tc - text color
     t(tm,tx,ty,tf,tc)
     {
-        f.c(tc);
+        f.fs(tc);
         c.font = tf+'px Arial';
         // Adding `to.f` as offset to `ty`
         c.fillText(tm,tx,parseInt(ty)+parseInt(tf));  
+    },
+    // Draw line
+    // lx, ly - line start
+    // lxe, lye - line end
+    // lc - line color
+    // lw - line width; def=1
+    l(lx,ly,lxe,lye,lc,lw=1)
+    {
+        c.moveTo(lx, ly);
+        c.lineTo(lxe, lye);
+        f.ss(lc);
+        f.lw(lw);
+        c.stroke();
     },
     // Draw Rectangle
     // rx, ry - position
@@ -91,13 +124,24 @@ f={
     // rc - color
     r(rx,ry,rw,rh,rc)
     {
-        f.c(rc);
+        f.fs(rc);
         c.fillRect(rx,ry,rw,rh);
     },
-    // Grid snapper
-    g(gx,gy,gs,gc)
+    // Draw circle
+    // TODO: Enchance to support `arc` element
+    // cx, cy - position
+    // cr - circle Radius
+    // ca - start angle
+    // cc - color
+    // cw - circle stoke sith; def=1
+    c(cx,cy,cr,ca,cc,cw=1)
     {
-        console.log(gx,gy,gs,gc);
+        c.beginPath();
+        c.arc(cx, cy, cr, ca, 2*m.PI);
+        f.fs(cc);
+        c.fill();
+        f.lw(cw);
+        c.stroke();
     }
 };
 
