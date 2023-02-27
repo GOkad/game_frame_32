@@ -30,18 +30,16 @@ void Engine32::register_web_routes()
      * @param h - Screen Height
      */
     m_connection->register_route("/cfg", WebRequestMethod::HTTP_GET,
-    [](AsyncWebServerRequest* request){
-        std::uint16_t width = request->hasParam("w") ?
+    [
+        screen_buffer = m_screen_buffer.get()
+    ](AsyncWebServerRequest* request){
+        std::uint16_t screen_width = request->hasParam("w") ?
             std::stoi(request->getParam("w")->value().c_str()) : 0;
 
-        std::uint16_t height = request->hasParam("h") ?
+        std::uint16_t screen_height = request->hasParam("h") ?
             std::stoi(request->getParam("h")->value().c_str()) : 0;
 
-        Serial.print("Width: ");
-        Serial.println(width);
-
-        Serial.print("Height: ");
-        Serial.println(height);
+        screen_buffer->demo(screen_width, screen_height);
 
         
         std::string josn_config = "{}";
@@ -54,13 +52,14 @@ void Engine32::register_web_routes()
     m_connection->register_route("/sbuf", WebRequestMethod::HTTP_GET,
     [screen_buffer = m_screen_buffer.get()](AsyncWebServerRequest *request){
         std::string response = "[";
-        Serial.println("Waiting for ScreenBuffer...");
+        // Serial.println("Waiting for ScreenBuffer...");
         while(!screen_buffer->can_read()) {
-            Serial.print(".");
+            // Serial.print(".");
         }
-        Serial.println("done");
+        // Serial.println("done");
         response += screen_buffer->read().c_str();
         response += "]";
+        Serial.println(response.c_str());
 
         request->send(200, "text/html", response.c_str());
     });
