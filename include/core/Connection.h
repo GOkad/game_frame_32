@@ -5,8 +5,8 @@
 #include <cstdint>
 #include <string>
 
-#include <WiFi.h>
-#include <AsyncTCP.h>
+#include <ESP8266WiFi.h>
+#include <ESPAsyncTCP.h>
 #include "ESPAsyncWebServer.h"
 #include "config/.WebServerConfig.h"
 
