@@ -33,12 +33,11 @@ void Engine32::register_web_routes()
     [
         screen = m_screen.get()
     ](AsyncWebServerRequest* request){
-        std::uint16_t screen_width = request->hasParam("w") ?
-            std::stoi(request->getParam("w")->value().c_str()) : 0;
+        // std::uint16_t screen_width = request->hasParam("w") ?
+        //     std::stoi(request->getParam("w")->value().c_str()) : 0;
 
-        std::uint16_t screen_height = request->hasParam("h") ?
-            std::stoi(request->getParam("h")->value().c_str()) : 0;
-
+        // std::uint16_t screen_height = request->hasParam("h") ?
+        //     std::stoi(request->getParam("h")->value().c_str()) : 0;
 
         std::string josn_config = "{}";
         request->send(200, "text/html", josn_config.c_str());
@@ -49,30 +48,30 @@ void Engine32::register_web_routes()
      */
     m_connection->register_route("/sbuf", WebRequestMethod::HTTP_GET,
     [
-        frame_cb = m_frame_cb,
+        engine = this,
         screen = m_screen.get()
     ](AsyncWebServerRequest *request){
         
-        frame_cb();
-        std::string response = "[";
-        // Serial.println("Waiting for ScreenBuffer...");
-        while(!screen->can_read()) {
-            // Serial.print(".");
-        }
-        // Serial.println("done");
-        response += screen->read_buffer().c_str();
-        response += "]";
-        Serial.println(response.c_str());
+        engine->trigger(CallbackEvents::DRAW);
+
+        while(!screen->can_read())
+            {}
+
+        std::string response = screen->read_buffer();
 
         request->send(200, "text/html", response.c_str());
     });
 }
 
-/**
- * Set all re-calculations for the frame
- * 
- */
-void Engine32::set_frame_cb(callback_function frame_cb)
+
+void Engine32::register_event(CallbackEvents event, callback_function frame_cb)
 {
-    m_frame_cb = frame_cb;
+    m_events.insert({event, frame_cb});
+}
+void Engine32::trigger(CallbackEvents event) {
+    if(m_events.find(event) == m_events.end())
+        return;
+
+    const auto &it = m_events.find(event);
+    it->second();
 }

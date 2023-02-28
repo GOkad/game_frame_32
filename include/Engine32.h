@@ -2,6 +2,9 @@
 #define ENGINE_32
 
 #include <memory>
+#include <unordered_map>
+
+#include "config/CallbackEvents.h"
 
 class Screen;
 using screen_up = std::unique_ptr<Screen>;
@@ -22,11 +25,16 @@ private:
     screen_up           m_screen;
     connection_up       m_connection;
     // controller_up       m_controller;
-    callback_function   m_frame_cb;
+    std::unordered_map<CallbackEvents,callback_function> m_events;
 public:
     Engine32(const WebServerConfig& web_server_config);
     ~Engine32();
-    void set_frame_cb(callback_function frame_cb);
+    void register_event(CallbackEvents event, callback_function frame_cb);
+    void trigger(CallbackEvents event);
+    void engine_test()
+    {
+        Serial.println("test");
+    }
 private:
     void register_web_routes();
 };

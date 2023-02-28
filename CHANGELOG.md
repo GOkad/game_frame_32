@@ -3,7 +3,7 @@
 ## Version 0.2.0 [28-02-23]
 ### **`It's my mental ilness and I choose the coping mechanism`**
 ### Added
-- Game class
+- Register/Trigger `Callback event`
 ### Changed
 - ESP32 -> ESP8266
 > **Reason**: The `WiFi.h` and `ESPAsyncTCP.h` take less space in `FLASH`. <br>

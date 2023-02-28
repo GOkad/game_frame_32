@@ -29,16 +29,18 @@ public:
     {
         std::stringstream stream;
 
+        stream << "[";
+
         for( std::string element : m_buffer)
         {
-            // Add " for JSON
-            // TODO: Fix this
             stream << "\"" << element << "\",";
         }
 
         std::string stream_string = stream.str();
         std::string buffer_string = stream_string.substr(0, stream_string.size()-1);
 
+        buffer_string += "]";
+        
         return buffer_string; 
     }
 };
