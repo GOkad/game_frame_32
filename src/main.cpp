@@ -2,11 +2,15 @@
 #include "config/.WebServerConfig.h"
 #include "Engine32.h"
 
+Engine32 engine32(WebServerConfig{});
+
+
 void setup() {
   Serial.begin(115200);
-  Serial.println("");
+  engine32.set_frame_cb([](){
+
+  });
 }
 
 void loop() {
-  static Engine32 engine32(WebServerConfig{});
 }

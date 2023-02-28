@@ -39,7 +39,6 @@ void Engine32::register_web_routes()
         std::uint16_t screen_height = request->hasParam("h") ?
             std::stoi(request->getParam("h")->value().c_str()) : 0;
 
-        screen->demo(screen_width, screen_height);
 
         std::string josn_config = "{}";
         request->send(200, "text/html", josn_config.c_str());
@@ -49,7 +48,12 @@ void Engine32::register_web_routes()
      * Read screen buffer
      */
     m_connection->register_route("/sbuf", WebRequestMethod::HTTP_GET,
-    [screen = m_screen.get()](AsyncWebServerRequest *request){
+    [
+        frame_cb = m_frame_cb,
+        screen = m_screen.get()
+    ](AsyncWebServerRequest *request){
+        
+        frame_cb();
         std::string response = "[";
         // Serial.println("Waiting for ScreenBuffer...");
         while(!screen->can_read()) {
@@ -62,4 +66,13 @@ void Engine32::register_web_routes()
 
         request->send(200, "text/html", response.c_str());
     });
+}
+
+/**
+ * Set all re-calculations for the frame
+ * 
+ */
+void Engine32::set_frame_cb(callback_function frame_cb)
+{
+    m_frame_cb = frame_cb;
 }

@@ -1,11 +1,15 @@
 # C++ Game Frame 32 Changelog
 
-## Version 0.y.z [dd-mm-23]
-### **`Version name`**
+## Version 0.2.0 [28-02-23]
+### **`It's my mental ilness and I choose the coping mechanism`**
 ### Added
+- Game class
 ### Changed
-### Fixed
-### Deleted
+- ESP32 -> ESP8266
+> **Reason**: The `WiFi.h` and `ESPAsyncTCP.h` take less space in `FLASH`. <br>
+> **Note**: WiFi will **`NOT`** run on `Core 0` <br>
+> **Note**: Less `RAM` storage
+- Engine32: Re-design
 ---
 ## Version 0.1.0 [26-02-23]
 ### **`Core & Controller`**

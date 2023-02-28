@@ -41,43 +41,6 @@ public:
 
         return buffer_string; 
     }
-
-    /**
-     * DEVELOPMENT METHOD ONLY
-     * TO BE Extracted into examples
-     */
-    void demo(uint16_t screen_width, uint16_t screen_height)
-    {
-        Serial.print("Width: ");
-        Serial.print(screen_width);
-        Serial.print(" / Height: ");
-        Serial.println(screen_height);
-
-        m_can_read = false;
-        
-        const std::uint8_t cell_size = 50;
-        const float grid_width = std::floor(screen_width/cell_size);
-        const float grid_height = std::floor(screen_height/cell_size);
-
-        // Rectangle element
-        for(int y = 0; y < grid_height; y++ )
-        {
-            bool flag = ( y%2 == 0 );
-            for(int x = 0; x < grid_width; x++ )
-            {
-                flag = !flag;
-                std::stringstream cell;
-                cell << "r" << "," <<
-                        (int)(x*cell_size) << "," <<
-                        (int)(y*cell_size) << "," <<
-                        (int)cell_size << "," <<
-                        (int)cell_size << "," <<
-                        (flag ? "0f0" : "f00");
-                m_buffer.push_back(cell.str());
-            }
-        }
-        m_can_read = true;        
-    }
 };
 
 #endif
