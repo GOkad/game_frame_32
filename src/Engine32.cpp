@@ -2,6 +2,7 @@
 
 #include "core/Connection.h"
 #include "core/Screen.h"
+#include "core/Component.h"
 #include "Engine32.h"
 
 Engine32::Engine32(const WebServerConfig& web_server_config):
@@ -9,6 +10,7 @@ Engine32::Engine32(const WebServerConfig& web_server_config):
     m_connection{std::make_unique<Connection>(web_server_config)}
 {
     register_web_routes();
+    clear_components();
 }
 Engine32::~Engine32() = default;
 
@@ -63,15 +65,25 @@ void Engine32::register_web_routes()
     });
 }
 
-
 void Engine32::register_event(CallbackEvents event, callback_function frame_cb)
 {
     m_events.insert({event, frame_cb});
 }
+
 void Engine32::trigger(CallbackEvents event) {
     if(m_events.find(event) == m_events.end())
         return;
 
     const auto &it = m_events.find(event);
     it->second();
+}
+
+void Engine32::clear_components()
+{
+    m_components.clear();
+}
+
+void Engine32::add_component(std::string component, bool is_static)
+{
+    m_screen->write_to_buffer(component);
 }

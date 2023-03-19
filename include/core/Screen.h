@@ -25,6 +25,10 @@ public:
         m_can_read = can_read;
         return m_can_read;
     }
+    void write_to_buffer(std::string component)
+    {
+        m_buffer.push_back(component);
+    }
     std::string read_buffer()
     {
         std::stringstream stream;

@@ -1,9 +1,13 @@
 # C++ Game Frame 32 Changelog
 
+## Version 0.3.0 [dd-03-23]
+### **`Tool for the job`**
+
 ## Version 0.2.0 [28-02-23]
 ### **`It's my mental ilness and I choose the coping mechanism`**
 ### Added
 - Register/Trigger `Callback event`
+- `Component` class
 ### Changed
 - ESP32 -> ESP8266
 > **Reason**: The `WiFi.h` and `ESPAsyncTCP.h` take less space in `FLASH`. <br>

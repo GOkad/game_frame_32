@@ -13,6 +13,8 @@ struct WebServerConfig;
 class Connection;
 using connection_up = std::unique_ptr<Connection>;
 
+
+class Component;
 // struct HardwareConfig;
 // class Controller;
 // using controller_up = std::unique_ptr<Controller>;
@@ -26,15 +28,14 @@ private:
     connection_up       m_connection;
     // controller_up       m_controller;
     std::unordered_map<CallbackEvents,callback_function> m_events;
+    std::vector<Component*> m_components;
 public:
     Engine32(const WebServerConfig& web_server_config);
     ~Engine32();
     void register_event(CallbackEvents event, callback_function frame_cb);
     void trigger(CallbackEvents event);
-    void engine_test()
-    {
-        Serial.println("test");
-    }
+    void clear_components();
+    void add_component(std::string component, bool is_static);
 private:
     void register_web_routes();
 };
